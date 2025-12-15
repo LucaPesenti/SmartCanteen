@@ -217,120 +217,86 @@ I ruoli principali includono:
 
 ---
 
-## 4. Requisiti funzionali
+## 5. Requisiti non funzionali
 
-In questa sezione sono descritti i **requisiti funzionali** del sistema SmartCanteen.  
-Essi definiscono le funzionalità che il sistema deve fornire per supportare il processo operativo della mensa aziendale.
+In questa sezione sono descritti i **requisiti non funzionali** del sistema SmartCanteen.  
+Essi definiscono le qualità, i vincoli e le caratteristiche operative che il sistema deve rispettare, influenzando direttamente le scelte architetturali e progettuali.
 
-Ogni requisito funzionale è identificato da un codice univoco (RFx) ed è espresso in modo chiaro e verificabile.  
-I requisiti qui riportati rappresentano una **baseline iniziale** e potranno essere raffinati e dettagliati nelle iterazioni successive del processo AMDD.
-
----
-
-### RF1 – Check-in del dipendente tramite badge
-
-Il sistema deve consentire al dipendente di effettuare il check-in alla mensa utilizzando il badge aziendale.
-
-A seguito del check-in, il sistema deve:
-- identificare il dipendente;
-- verificare la validità del turno di accesso;
-- creare un **Ticket** associato al dipendente e al turno corrente, con stato iniziale `OPEN`.
+I requisiti non funzionali qui riportati rappresentano una definizione iniziale e potranno essere raffinati e misurati in modo più puntuale nelle iterazioni successive.
 
 ---
 
-### RF2 – Gestione del ticket di accesso
+### RNF1 – Sicurezza
 
-Il sistema deve gestire il ciclo di vita del **Ticket**, che rappresenta il diritto del dipendente a consumare un pasto in un determinato turno.
-
-Il ticket deve poter assumere i seguenti stati:
-- `OPEN`: ticket valido e in attesa di servizio;
-- `SERVED`: pasto servito correttamente;
-- `EXPIRED`: ticket scaduto per superamento del tempo massimo consentito;
-- `NO_SHOW`: ticket non utilizzato dal dipendente.
-
----
-
-### RF3 – Registrazione del servizio del pasto
-
-Il sistema deve consentire allo **Staff Mensa** di registrare i piatti serviti a un dipendente associandoli a un ticket `OPEN`.
-
-Durante la registrazione del servizio, il sistema deve:
-- validare i vincoli sul numero massimo di piatti per tipologia (primo, secondo, contorno);
-- verificare la disponibilità degli ingredienti necessari;
-- completare il servizio del pasto aggiornando lo stato del ticket a `SERVED`.
-
----
-
-### RF4 – Gestione del menu giornaliero
-
-Il sistema deve permettere la gestione e la consultazione del **menu giornaliero** della mensa.
+Il sistema deve garantire un adeguato livello di sicurezza per proteggere dati e funzionalità.
 
 In particolare, il sistema deve:
-- distinguere tra piatti del giorno e piatti sempre disponibili;
-- consentire la visualizzazione del menu in base alla data e alla mensa;
-- rendere il menu consultabile dagli attori autorizzati.
+- utilizzare comunicazioni sicure tramite protocollo TLS;
+- supportare l’autenticazione degli utenti tramite meccanismi aziendali;
+- gestire l’accesso alle funzionalità in base ai ruoli degli utenti;
+- prevenire accessi non autorizzati ai dati sensibili.
 
 ---
 
-### RF5 – Gestione di ricette e ingredienti
+### RNF2 – Affidabilità e consistenza dei dati
 
-Il sistema deve consentire allo **Chef** e agli utenti autorizzati di gestire:
-- le ricette associate ai piatti;
-- gli ingredienti utilizzati e le relative quantità;
-- le informazioni di costo e unità di misura degli ingredienti.
+Il sistema deve garantire l’affidabilità delle operazioni e la consistenza dei dati.
 
-Ogni piatto deve essere associato a una ricetta che ne definisce la composizione.
-
----
-
-### RF6 – Aggiornamento automatico dell’inventario
-
-A seguito del servizio di un pasto, il sistema deve:
-- calcolare le quantità di ingredienti utilizzate in base alle ricette;
-- decrementare automaticamente l’inventario degli ingredienti;
-- garantire la coerenza dei dati tramite operazioni atomiche.
+In particolare:
+- le operazioni critiche (es. servizio del pasto) devono essere atomiche;
+- il sistema deve prevenire stati inconsistenti dei ticket e dell’inventario;
+- devono essere gestiti correttamente casi di errore o interruzione del servizio.
 
 ---
 
-### RF7 – Pianificazione della produzione per turno
+### RNF3 – Performance
 
-Il sistema deve supportare la **pianificazione della produzione** dei piatti per ciascun turno.
+Il sistema deve garantire tempi di risposta adeguati per supportare il flusso operativo della mensa.
 
-Il sistema deve:
-- analizzare i dati storici dei pasti serviti;
-- suggerire un **Production Plan** con le quantità di piatti da preparare;
-- consentire allo Chef di consultare e utilizzare tali suggerimenti.
-
----
-
-### RF8 – Contabilizzazione del pasto
-
-Per ogni pasto servito, il sistema deve:
-- generare una **Finance Entry**;
-- associare il costo del pasto al **centro di costo** del dipendente;
-- memorizzare le informazioni necessarie per il reporting contabile.
+In condizioni operative normali:
+- le operazioni principali devono essere completate entro tempi compatibili con l’utilizzo in tempo reale;
+- il sistema deve supportare un numero adeguato di accessi concorrenti durante i turni di punta.
 
 ---
 
-### RF9 – Reporting e analisi
+### RNF4 – Usabilità
 
-Il sistema deve fornire funzionalità di reporting a supporto della gestione del servizio mensa.
+Il sistema deve essere semplice e rapido da utilizzare, in particolare per lo **Staff Mensa** durante le operazioni di servizio.
 
-In particolare, il sistema deve consentire:
-- la consultazione del numero di pasti serviti;
-- l’analisi dei costi e del food cost;
-- la valutazione degli sprechi e dei casi di `NO_SHOW`.
+In particolare:
+- l’interazione con il terminale mensa deve richiedere un numero minimo di operazioni;
+- le informazioni rilevanti devono essere facilmente accessibili;
+- l’interfaccia deve ridurre il rischio di errori operativi.
 
 ---
 
-### RF10 – Gestione dei ruoli e delle autorizzazioni
+### RNF5 – Scalabilità
 
-Il sistema deve supportare la gestione dei ruoli degli utenti e limitare l’accesso alle funzionalità in base al ruolo assegnato.
+Il sistema deve essere progettato in modo da poter scalare in funzione delle esigenze aziendali.
 
-I ruoli principali includono:
-- Employee;
-- Staff Mensa;
-- Chef;
-- Manager;
-- Admin.
+In particolare:
+- deve supportare più mense o sedi aziendali;
+- deve consentire l’aggiunta di nuovi utenti e ruoli;
+- deve poter gestire un aumento del volume di dati nel tempo.
 
+---
+
+### RNF6 – Manutenibilità ed estendibilità
+
+Il sistema deve essere progettato per facilitare la manutenzione e l’evoluzione futura.
+
+In particolare:
+- il codice deve essere strutturato in modo modulare;
+- l’architettura deve supportare l’introduzione di nuove funzionalità;
+- la documentazione deve essere mantenuta coerente con l’evoluzione del sistema.
+
+---
+
+### RNF7 – Portabilità
+
+Il sistema deve poter essere eseguito su infrastrutture standard senza dipendenze proprietarie vincolanti.
+
+In particolare:
+- deve essere distribuibile come applicazione Java;
+- deve poter essere eseguito su ambienti server comuni;
+- l’installazione e la configurazione devono essere riproducibili.
