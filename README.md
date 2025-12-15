@@ -1,6 +1,6 @@
 # SmartCanteen
 
-Università degli Studi di Bergamo - Scuola di Ingegneria - Corso di Laurea Magistrale in Ingegneria Informatica - A.A. 2025/2026
+Università degli Studi di Bergamo - Corso di Laurea Magistrale in Ingegneria Informatica - A.A. 2025/2026
 
 ---
 
