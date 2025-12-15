@@ -42,3 +42,56 @@ Sono esplicitamente **fuori dallo scopo** del sistema:
 - la gestione logistica o contabile esterna all’azienda.
 
 Queste funzionalità potranno essere considerate come possibili estensioni future, ma non rientrano negli obiettivi del progetto corrente.
+
+---
+
+## 3. Stakeholder e attori
+
+Il sistema SmartCanteen coinvolge diversi soggetti con ruoli, responsabilità e obiettivi differenti.  
+In questa sezione vengono identificati sia gli **attori che interagiscono direttamente con il sistema**, sia gli **stakeholder** che ne traggono beneficio o ne influenzano i requisiti.
+
+L’identificazione chiara di questi soggetti è fondamentale per:
+- la corretta definizione dei requisiti funzionali;
+- la modellazione dei casi d’uso UML;
+- la progettazione dell’architettura del sistema.
+
+---
+
+### 3.1 Stakeholder
+
+**Azienda (Owner del sistema)**  
+È il principale stakeholder del sistema SmartCanteen. L’azienda è interessata al controllo dei costi del servizio mensa, alla riduzione degli sprechi e alla disponibilità di dati affidabili per analisi e reporting.
+
+**Direzione / Management**  
+Utilizza le informazioni prodotte dal sistema per monitorare le performance del servizio mensa, valutare i costi e supportare decisioni strategiche.
+
+**Reparto IT aziendale**  
+È responsabile dell’infrastruttura tecnologica e dell’integrazione del sistema SmartCanteen con l’ambiente IT esistente (autenticazione, rete, sicurezza).
+
+---
+
+### 3.2 Attori del sistema
+
+**Employee**  
+Dipendente dell’azienda che utilizza il sistema per accedere al servizio mensa tramite badge. Interagisce indirettamente con il sistema durante il check-in e il consumo del pasto.
+
+**Staff Mensa**  
+Operatore della mensa incaricato di registrare i piatti serviti ai dipendenti. Utilizza il terminale mensa per associare i piatti a un ticket e completare il servizio del pasto.
+
+**Chef**  
+Responsabile della gestione delle ricette, degli ingredienti e delle scorte. Utilizza il sistema per monitorare l’inventario e supportare la pianificazione della produzione.
+
+**Manager**  
+Utente che accede alle funzionalità di analisi e reporting. Consulta KPI, report su costi, sprechi e pasti serviti per valutare l’andamento del servizio mensa.
+
+**Admin**  
+Utente con privilegi amministrativi. È responsabile della configurazione del sistema, della gestione degli utenti e dell’assegnazione dei ruoli.
+
+---
+
+### 3.3 Relazione tra attori e casi d’uso
+
+Gli attori individuati in questa sezione costituiscono la base per la modellazione dei casi d’uso descritti nell’Iterazione 0.  
+Ogni requisito funzionale sarà associato a uno o più attori, garantendo la tracciabilità tra requisiti, casi d’uso UML e funzionalità del sistema.
+
+I ruoli e i termini utilizzati in questa sezione sono coerenti con le definizioni riportate nel file `glossary.md`.
