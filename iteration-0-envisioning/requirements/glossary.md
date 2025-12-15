@@ -44,7 +44,7 @@ Può assumere stati come OPEN, SERVED, EXPIRED o NO_SHOW.
 **Pasto**  
 Insieme dei piatti serviti a un dipendente in un singolo accesso alla mensa.
 
-**Piatto (Dish)**  
+**Piatto**  
 Singola portata disponibile nel menu (primo, secondo o contorno). Può essere “del giorno” o sempre disponibile.
 
 **Menu Giornaliero**  
@@ -66,7 +66,40 @@ Quantità corrente degli ingredienti disponibili in magazzino.
 **Decremento Stock**  
 Riduzione automatica delle quantità di ingredienti in inventario a seguito del servizio di un pasto.
 
-**Production Plan (Piano di Produzione)**  
+**Production Plan**  
 Suggerimento o pianificazione delle quantità di piatti da preparare per un determinato turno, basato su dati storici e previsioni.
 
 ---
+
+## Contabilità e reporting
+
+**Served**  
+Record che rappresenta un pasto effettivamente erogato, associato a un ticket, ai piatti serviti e ai relativi costi.
+
+**Food Cost**  
+Costo complessivo degli ingredienti utilizzati per preparare un pasto o un piatto.
+
+**Finance Entry**  
+Voce contabile generata per ogni pasto servito, utilizzata per l’attribuzione dei costi al centro di costo aziendale.
+
+**Centro di Costo**  
+Unità organizzativa dell’azienda a cui viene attribuito il costo del pasto consumato dal dipendente.
+
+**NO_SHOW**  
+Stato di un ticket che indica che il dipendente ha effettuato il check-in ma non ha consumato il pasto entro il tempo previsto.
+
+**Spreco**  
+Differenza tra produzione pianificata e consumo effettivo, utilizzata per analisi e ottimizzazione del servizio.
+
+---
+
+## Sistema e architettura
+
+**Terminale Mensa**  
+Postazione locale utilizzata dallo staff per il check-in dei dipendenti e la registrazione dei piatti serviti.
+
+**Server Centrale**  
+Componente centrale del sistema SmartCanteen che gestisce la logica applicativa, i dati e le API.
+
+**API REST**  
+Interfacce di comunicazione esposte dal sistema per l’interazione tra terminali, servizi e componenti software.
