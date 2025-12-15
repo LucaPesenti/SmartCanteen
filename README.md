@@ -1,7 +1,6 @@
 # SmartCanteen
 
-SmartCanteen è un progetto accademico sviluppato nell’ambito del corso magistrale **Progettazione, Algoritmi e Computabilità [38090]**.  
-Il progetto ha come obiettivo la progettazione e realizzazione incrementale di un sistema software per la gestione informatizzata di una mensa aziendale, applicando il processo **Agile Model Driven Development (AMDD)**.
+Università degli Studi di Bergamo - Scuola di Ingegneria - Corso di Laurea Magistrale in Ingegneria Informatica - A.A. 2025/2026
 
 ---
 
