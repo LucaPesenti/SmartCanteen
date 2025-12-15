@@ -95,3 +95,242 @@ Gli attori individuati in questa sezione costituiscono la base per la modellazio
 Ogni requisito funzionale sarà associato a uno o più attori, garantendo la tracciabilità tra requisiti, casi d’uso UML e funzionalità del sistema.
 
 I ruoli e i termini utilizzati in questa sezione sono coerenti con le definizioni riportate nel file `glossary.md`.
+
+---
+
+## 4. Requisiti funzionali
+
+In questa sezione sono descritti i **requisiti funzionali** del sistema SmartCanteen.  
+Essi definiscono le funzionalità che il sistema deve fornire per supportare il processo operativo della mensa aziendale.
+
+Ogni requisito funzionale è identificato da un codice univoco (RFx) ed è espresso in modo chiaro e verificabile.  
+I requisiti qui riportati rappresentano una **baseline iniziale** e potranno essere raffinati e dettagliati nelle iterazioni successive del processo AMDD.
+
+---
+
+### RF1 – Check-in del dipendente tramite badge
+
+Il sistema deve consentire al dipendente di effettuare il check-in alla mensa utilizzando il badge aziendale.
+
+A seguito del check-in, il sistema deve:
+- identificare il dipendente;
+- verificare la validità del turno di accesso;
+- creare un **Ticket** associato al dipendente e al turno corrente, con stato iniziale `OPEN`.
+
+---
+
+### RF2 – Gestione del ticket di accesso
+
+Il sistema deve gestire il ciclo di vita del **Ticket**, che rappresenta il diritto del dipendente a consumare un pasto in un determinato turno.
+
+Il ticket deve poter assumere i seguenti stati:
+- `OPEN`: ticket valido e in attesa di servizio;
+- `SERVED`: pasto servito correttamente;
+- `EXPIRED`: ticket scaduto per superamento del tempo massimo consentito;
+- `NO_SHOW`: ticket non utilizzato dal dipendente.
+
+---
+
+### RF3 – Registrazione del servizio del pasto
+
+Il sistema deve consentire allo **Staff Mensa** di registrare i piatti serviti a un dipendente associandoli a un ticket `OPEN`.
+
+Durante la registrazione del servizio, il sistema deve:
+- validare i vincoli sul numero massimo di piatti per tipologia (primo, secondo, contorno);
+- verificare la disponibilità degli ingredienti necessari;
+- completare il servizio del pasto aggiornando lo stato del ticket a `SERVED`.
+
+---
+
+### RF4 – Gestione del menu giornaliero
+
+Il sistema deve permettere la gestione e la consultazione del **menu giornaliero** della mensa.
+
+In particolare, il sistema deve:
+- distinguere tra piatti del giorno e piatti sempre disponibili;
+- consentire la visualizzazione del menu in base alla data e alla mensa;
+- rendere il menu consultabile dagli attori autorizzati.
+
+---
+
+### RF5 – Gestione di ricette e ingredienti
+
+Il sistema deve consentire allo **Chef** e agli utenti autorizzati di gestire:
+- le ricette associate ai piatti;
+- gli ingredienti utilizzati e le relative quantità;
+- le informazioni di costo e unità di misura degli ingredienti.
+
+Ogni piatto deve essere associato a una ricetta che ne definisce la composizione.
+
+---
+
+### RF6 – Aggiornamento automatico dell’inventario
+
+A seguito del servizio di un pasto, il sistema deve:
+- calcolare le quantità di ingredienti utilizzate in base alle ricette;
+- decrementare automaticamente l’inventario degli ingredienti;
+- garantire la coerenza dei dati tramite operazioni atomiche.
+
+---
+
+### RF7 – Pianificazione della produzione per turno
+
+Il sistema deve supportare la **pianificazione della produzione** dei piatti per ciascun turno.
+
+Il sistema deve:
+- analizzare i dati storici dei pasti serviti;
+- suggerire un **Production Plan** con le quantità di piatti da preparare;
+- consentire allo Chef di consultare e utilizzare tali suggerimenti.
+
+---
+
+### RF8 – Contabilizzazione del pasto
+
+Per ogni pasto servito, il sistema deve:
+- generare una **Finance Entry**;
+- associare il costo del pasto al **centro di costo** del dipendente;
+- memorizzare le informazioni necessarie per il reporting contabile.
+
+---
+
+### RF9 – Reporting e analisi
+
+Il sistema deve fornire funzionalità di reporting a supporto della gestione del servizio mensa.
+
+In particolare, il sistema deve consentire:
+- la consultazione del numero di pasti serviti;
+- l’analisi dei costi e del food cost;
+- la valutazione degli sprechi e dei casi di `NO_SHOW`.
+
+---
+
+### RF10 – Gestione dei ruoli e delle autorizzazioni
+
+Il sistema deve supportare la gestione dei ruoli degli utenti e limitare l’accesso alle funzionalità in base al ruolo assegnato.
+
+I ruoli principali includono:
+- Employee;
+- Staff Mensa;
+- Chef;
+- Manager;
+- Admin.
+
+---
+
+## 4. Requisiti funzionali
+
+In questa sezione sono descritti i **requisiti funzionali** del sistema SmartCanteen.  
+Essi definiscono le funzionalità che il sistema deve fornire per supportare il processo operativo della mensa aziendale.
+
+Ogni requisito funzionale è identificato da un codice univoco (RFx) ed è espresso in modo chiaro e verificabile.  
+I requisiti qui riportati rappresentano una **baseline iniziale** e potranno essere raffinati e dettagliati nelle iterazioni successive del processo AMDD.
+
+---
+
+### RF1 – Check-in del dipendente tramite badge
+
+Il sistema deve consentire al dipendente di effettuare il check-in alla mensa utilizzando il badge aziendale.
+
+A seguito del check-in, il sistema deve:
+- identificare il dipendente;
+- verificare la validità del turno di accesso;
+- creare un **Ticket** associato al dipendente e al turno corrente, con stato iniziale `OPEN`.
+
+---
+
+### RF2 – Gestione del ticket di accesso
+
+Il sistema deve gestire il ciclo di vita del **Ticket**, che rappresenta il diritto del dipendente a consumare un pasto in un determinato turno.
+
+Il ticket deve poter assumere i seguenti stati:
+- `OPEN`: ticket valido e in attesa di servizio;
+- `SERVED`: pasto servito correttamente;
+- `EXPIRED`: ticket scaduto per superamento del tempo massimo consentito;
+- `NO_SHOW`: ticket non utilizzato dal dipendente.
+
+---
+
+### RF3 – Registrazione del servizio del pasto
+
+Il sistema deve consentire allo **Staff Mensa** di registrare i piatti serviti a un dipendente associandoli a un ticket `OPEN`.
+
+Durante la registrazione del servizio, il sistema deve:
+- validare i vincoli sul numero massimo di piatti per tipologia (primo, secondo, contorno);
+- verificare la disponibilità degli ingredienti necessari;
+- completare il servizio del pasto aggiornando lo stato del ticket a `SERVED`.
+
+---
+
+### RF4 – Gestione del menu giornaliero
+
+Il sistema deve permettere la gestione e la consultazione del **menu giornaliero** della mensa.
+
+In particolare, il sistema deve:
+- distinguere tra piatti del giorno e piatti sempre disponibili;
+- consentire la visualizzazione del menu in base alla data e alla mensa;
+- rendere il menu consultabile dagli attori autorizzati.
+
+---
+
+### RF5 – Gestione di ricette e ingredienti
+
+Il sistema deve consentire allo **Chef** e agli utenti autorizzati di gestire:
+- le ricette associate ai piatti;
+- gli ingredienti utilizzati e le relative quantità;
+- le informazioni di costo e unità di misura degli ingredienti.
+
+Ogni piatto deve essere associato a una ricetta che ne definisce la composizione.
+
+---
+
+### RF6 – Aggiornamento automatico dell’inventario
+
+A seguito del servizio di un pasto, il sistema deve:
+- calcolare le quantità di ingredienti utilizzate in base alle ricette;
+- decrementare automaticamente l’inventario degli ingredienti;
+- garantire la coerenza dei dati tramite operazioni atomiche.
+
+---
+
+### RF7 – Pianificazione della produzione per turno
+
+Il sistema deve supportare la **pianificazione della produzione** dei piatti per ciascun turno.
+
+Il sistema deve:
+- analizzare i dati storici dei pasti serviti;
+- suggerire un **Production Plan** con le quantità di piatti da preparare;
+- consentire allo Chef di consultare e utilizzare tali suggerimenti.
+
+---
+
+### RF8 – Contabilizzazione del pasto
+
+Per ogni pasto servito, il sistema deve:
+- generare una **Finance Entry**;
+- associare il costo del pasto al **centro di costo** del dipendente;
+- memorizzare le informazioni necessarie per il reporting contabile.
+
+---
+
+### RF9 – Reporting e analisi
+
+Il sistema deve fornire funzionalità di reporting a supporto della gestione del servizio mensa.
+
+In particolare, il sistema deve consentire:
+- la consultazione del numero di pasti serviti;
+- l’analisi dei costi e del food cost;
+- la valutazione degli sprechi e dei casi di `NO_SHOW`.
+
+---
+
+### RF10 – Gestione dei ruoli e delle autorizzazioni
+
+Il sistema deve supportare la gestione dei ruoli degli utenti e limitare l’accesso alle funzionalità in base al ruolo assegnato.
+
+I ruoli principali includono:
+- Employee;
+- Staff Mensa;
+- Chef;
+- Manager;
+- Admin.
+
