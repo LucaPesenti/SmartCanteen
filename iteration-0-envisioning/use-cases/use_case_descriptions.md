@@ -205,3 +205,41 @@ Il sistema calcola le quantità di ingredienti utilizzate sulla base delle ricet
 
 ---
 
+## UC6 – Pianificazione della produzione
+
+### Attori principali
+- Chef
+
+### Attori secondari
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive il processo di pianificazione della produzione dei piatti per uno specifico turno.  
+Il sistema supporta lo Chef fornendo indicazioni basate sui dati storici relativi ai pasti serviti, al fine di ottimizzare le quantità da preparare e ridurre gli sprechi.
+
+### Precondizioni
+- L’utente è autenticato ed è autorizzato alla pianificazione della produzione.
+- Sono disponibili dati storici sui pasti serviti.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- Un piano di produzione per il turno selezionato è stato generato o consultato.
+- Le informazioni di pianificazione sono memorizzate nel sistema.
+
+### Flusso principale
+1. Lo Chef accede alla funzionalità di pianificazione della produzione.
+2. Lo Chef seleziona il turno per il quale pianificare la produzione.
+3. Il sistema analizza i dati storici dei pasti serviti.
+4. Il sistema propone un piano di produzione con le quantità suggerite.
+5. Lo Chef consulta il piano di produzione.
+6. Il sistema memorizza il piano di produzione.
+
+### Flussi alternativi
+- **A1 – Dati storici insufficienti**  
+  Se i dati storici non sono sufficienti per generare un piano affidabile, il sistema segnala la situazione allo Chef.
+
+- **A2 – Errore di sistema**  
+  In caso di errore durante l’elaborazione del piano, il sistema segnala l’impossibilità di completare l’operazione.
+
+---
+
