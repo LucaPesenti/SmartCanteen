@@ -46,3 +46,50 @@ Il check-in consente al sistema di registrare l’accesso del dipendente e di cr
 
 ---
 
+## UC2 – Servizio del pasto
+
+### Attori principali
+- Staff Mensa
+
+### Attori secondari
+- Employee  
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive il processo mediante il quale lo staff della mensa registra il servizio del pasto a un dipendente che ha effettuato il check-in.  
+Durante il servizio vengono selezionati i piatti consumati, verificati i vincoli previsti e completata la registrazione del pasto nel sistema.
+
+### Precondizioni
+- Il dipendente ha effettuato correttamente il check-in.
+- Esiste un ticket associato al dipendente in stato `OPEN`.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- Il pasto è stato registrato correttamente.
+- Il ticket è aggiornato allo stato `SERVED`.
+- Le informazioni relative al pasto sono memorizzate nel sistema.
+
+### Flusso principale
+1. Lo staff mensa identifica il ticket del dipendente.
+2. Lo staff seleziona i piatti serviti al dipendente.
+3. Il sistema verifica il rispetto dei vincoli sul numero di piatti per tipologia.
+4. Il sistema verifica la disponibilità degli ingredienti necessari.
+5. Il sistema registra il pasto servito.
+6. Il sistema aggiorna lo stato del ticket a `SERVED`.
+7. Il sistema conferma il completamento del servizio.
+
+### Flussi alternativi
+- **A1 – Ticket non valido**  
+  Se il ticket non è in stato `OPEN`, il servizio del pasto non può essere completato.
+
+- **A2 – Violazione dei vincoli sui piatti**  
+  Se viene superato il numero massimo di piatti consentiti per tipologia, il sistema segnala l’errore e richiede una modifica della selezione.
+
+- **A3 – Ingredienti non disponibili**  
+  Se uno o più ingredienti non sono disponibili in quantità sufficiente, il sistema segnala l’impossibilità di completare il servizio.
+
+- **A4 – Errore di sistema**  
+  In caso di errore durante la registrazione del pasto, il sistema annulla l’operazione e il ticket rimane in stato `OPEN`.
+
+---
+
