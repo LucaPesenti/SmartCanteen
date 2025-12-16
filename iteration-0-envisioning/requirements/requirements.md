@@ -300,3 +300,40 @@ In particolare:
 - deve essere distribuibile come applicazione Java;
 - deve poter essere eseguito su ambienti server comuni;
 - l’installazione e la configurazione devono essere riproducibili.
+
+---
+
+## 6. Assunzioni e vincoli
+
+In questa sezione sono riportate le **assunzioni** e i **vincoli** considerati nella definizione dei requisiti del sistema SmartCanteen.  
+Esplicitare tali aspetti consente di delimitare correttamente il perimetro del progetto e di chiarire il contesto in cui il sistema verrà progettato e sviluppato.
+
+---
+
+### 6.1 Assunzioni
+
+- Si assume che ogni dipendente dell’azienda sia identificato in modo univoco tramite un badge aziendale valido.
+- Si assume che l’azienda disponga di un sistema di autenticazione centralizzato per la gestione degli utenti e dei ruoli.
+- Si assume che il servizio mensa operi secondo turni predefiniti associati a specifici reparti o gruppi di dipendenti.
+- Si assume che i processi operativi della mensa siano già consolidati e che il sistema SmartCanteen debba supportarli senza modificarne la struttura di base.
+- Si assume la disponibilità di dati storici sui pasti serviti, utili per la pianificazione della produzione.
+
+---
+
+### 6.2 Vincoli tecnologici
+
+- Il sistema deve essere sviluppato utilizzando il linguaggio **Java**.
+- L’architettura applicativa deve essere basata su servizi **REST** con scambio dati in formato **JSON**.
+- Il framework di riferimento per il backend è **Spring Boot**.
+- Il versionamento del codice e della documentazione deve essere gestito tramite **Git**.
+- La modellazione dei requisiti e dell’architettura deve essere espressa tramite diagrammi **UML**.
+
+---
+
+### 6.3 Vincoli architetturali e organizzativi
+
+- Il sistema deve adottare un’architettura centralizzata con terminali di servizio collegati a un server centrale.
+- Le operazioni critiche devono garantire coerenza e atomicità dei dati.
+- Il sistema deve essere utilizzabile in un contesto aziendale interno, con particolare attenzione alla sicurezza e alla tracciabilità.
+- Il progetto deve essere sviluppato seguendo il processo **Agile Model Driven Development (AMDD)**, articolato in iterazioni numerate e documentate.
+
