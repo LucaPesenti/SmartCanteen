@@ -167,3 +167,41 @@ Attraverso questa funzionalità, lo Chef può definire e aggiornare la composizi
 
 ---
 
+## UC5 – Aggiornamento dell’inventario
+
+### Attori principali
+- Sistema SmartCanteen
+
+### Attori secondari
+- Chef  
+- Staff Mensa
+
+### Descrizione
+Il caso d’uso descrive l’aggiornamento automatico dell’inventario degli ingredienti a seguito del servizio di un pasto.  
+Il sistema calcola le quantità di ingredienti utilizzate sulla base delle ricette associate ai piatti serviti e aggiorna le scorte disponibili.
+
+### Precondizioni
+- Un pasto è stato servito correttamente.
+- Il ticket associato al pasto è in stato `SERVED`.
+- Le ricette dei piatti serviti sono definite nel sistema.
+
+### Postcondizioni
+- Le quantità di ingredienti utilizzate sono state sottratte dall’inventario.
+- Lo stato dell’inventario è coerente con il servizio effettuato.
+
+### Flusso principale
+1. Il sistema rileva il completamento del servizio di un pasto.
+2. Il sistema identifica i piatti serviti e le relative ricette.
+3. Il sistema calcola le quantità di ingredienti utilizzate.
+4. Il sistema aggiorna l’inventario sottraendo le quantità utilizzate.
+5. Il sistema conferma l’aggiornamento dell’inventario.
+
+### Flussi alternativi
+- **A1 – Inventario insufficiente**  
+  Se le quantità disponibili di uno o più ingredienti risultano insufficienti, il sistema segnala la situazione e registra l’anomalia.
+
+- **A2 – Errore di aggiornamento**  
+  In caso di errore durante l’aggiornamento dell’inventario, il sistema annulla l’operazione per garantire la coerenza dei dati.
+
+---
+
