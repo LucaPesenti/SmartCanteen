@@ -337,3 +337,32 @@ Esplicitare tali aspetti consente di delimitare correttamente il perimetro del p
 - Il sistema deve essere utilizzabile in un contesto aziendale interno, con particolare attenzione alla sicurezza e alla tracciabilità.
 - Il progetto deve essere sviluppato seguendo il processo **Agile Model Driven Development (AMDD)**, articolato in iterazioni numerate e documentate.
 
+---
+
+## 7. Tracciabilità iniziale dei requisiti
+
+In questa sezione viene fornita una **tracciabilità iniziale** tra i requisiti funzionali definiti e i principali casi d’uso del sistema SmartCanteen.
+
+Lo scopo di questa tracciabilità è:
+- garantire la coerenza tra requisiti e modellazione UML;
+- facilitare la comprensione dell’impatto dei requisiti sulle funzionalità del sistema;
+- costituire una base per la tracciabilità più dettagliata che verrà sviluppata nelle iterazioni successive.
+
+La tracciabilità qui presentata è di livello alto ed è coerente con gli obiettivi dell’Iterazione 0 (Envisioning).
+
+---
+
+### 7.1 Mappatura requisiti funzionali – casi d’uso
+
+| Requisito Funzionale | Caso d’Uso Principale | Attori Coinvolti |
+|---------------------|----------------------|------------------|
+| RF1 – Check-in del dipendente tramite badge | Check-in dipendente | Employee |
+| RF2 – Gestione del ticket di accesso | Gestione ticket | Employee, Staff Mensa |
+| RF3 – Registrazione del servizio del pasto | Servire pasto | Staff Mensa |
+| RF4 – Gestione del menu giornaliero | Consultazione / gestione menu | Staff Mensa, Chef |
+| RF5 – Gestione di ricette e ingredienti | Gestione ricette e ingredienti | Chef |
+| RF6 – Aggiornamento automatico dell’inventario | Aggiornamento inventario | Chef |
+| RF7 – Pianificazione della produzione per turno | Pianificazione produzione | Chef |
+| RF8 – Contabilizzazione del pasto | Contabilizzazione pasto | Manager |
+| RF9 – Reporting e analisi | Consultazione report | Manager |
+| RF10 – Gestione dei ruoli e delle autorizzazioni | Gestione utenti e ruoli | Admin |
