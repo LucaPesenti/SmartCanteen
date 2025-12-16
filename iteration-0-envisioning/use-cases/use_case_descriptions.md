@@ -131,3 +131,39 @@ Il menu definisce l’insieme dei piatti disponibili per uno specifico giorno e 
 
 ---
 
+## UC4 – Gestione di ricette e ingredienti
+
+### Attori principali
+- Chef
+
+### Attori secondari
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive la gestione delle ricette e degli ingredienti utilizzati nella preparazione dei piatti serviti dalla mensa.  
+Attraverso questa funzionalità, lo Chef può definire e aggiornare la composizione dei piatti, specificando gli ingredienti e le relative quantità.
+
+### Precondizioni
+- L’utente è autenticato ed è autorizzato alla gestione di ricette e ingredienti.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- Le ricette e/o gli ingredienti sono stati creati, aggiornati o modificati correttamente.
+- Le informazioni aggiornate sono memorizzate nel sistema e disponibili per l’utilizzo operativo.
+
+### Flusso principale
+1. Lo Chef accede alla funzionalità di gestione di ricette e ingredienti.
+2. Lo Chef seleziona una ricetta o un ingrediente da creare o modificare.
+3. Lo Chef definisce o aggiorna le informazioni relative alla ricetta o all’ingrediente.
+4. Il sistema valida i dati inseriti.
+5. Il sistema salva le modifiche apportate.
+
+### Flussi alternativi
+- **A1 – Dati non validi**  
+  Se i dati inseriti non sono corretti o incompleti, il sistema segnala l’errore e richiede una correzione.
+
+- **A2 – Operazione non autorizzata**  
+  Se l’utente non dispone dei permessi necessari, l’operazione viene negata.
+
+---
+
