@@ -93,3 +93,41 @@ Durante il servizio vengono selezionati i piatti consumati, verificati i vincoli
 
 ---
 
+## UC3 – Gestione del menu giornaliero
+
+### Attori principali
+- Chef
+
+### Attori secondari
+- Staff Mensa  
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive la gestione del menu giornaliero della mensa.  
+Il menu definisce l’insieme dei piatti disponibili per uno specifico giorno e può includere piatti del giorno e piatti sempre disponibili.
+
+### Precondizioni
+- L’utente è autenticato ed è autorizzato alla gestione del menu.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- Il menu giornaliero è aggiornato e memorizzato nel sistema.
+- Il menu è disponibile per la consultazione durante il servizio.
+
+### Flusso principale
+1. Lo Chef accede alla funzionalità di gestione del menu.
+2. Lo Chef seleziona la data per la quale gestire il menu.
+3. Lo Chef definisce l’elenco dei piatti disponibili.
+4. Il sistema valida la composizione del menu.
+5. Il sistema salva il menu giornaliero.
+6. Il sistema rende il menu disponibile agli utenti autorizzati.
+
+### Flussi alternativi
+- **A1 – Utente non autorizzato**  
+  Se l’utente non dispone dei permessi necessari, l’accesso alla funzionalità è negato.
+
+- **A2 – Dati non validi**  
+  Se il menu non rispetta i vincoli previsti, il sistema segnala l’errore e richiede una correzione.
+
+---
+
