@@ -319,3 +319,36 @@ Il sistema consente al Manager di analizzare informazioni su pasti serviti, cost
 
 ---
 
+## UC9 – Gestione utenti e ruoli
+
+### Attori principali
+- Admin
+
+### Attori secondari
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive la gestione degli utenti del sistema e dei relativi ruoli.  
+L’Admin può creare, modificare e disabilitare utenti, nonché assegnare i ruoli necessari per l’accesso alle funzionalità del sistema SmartCanteen.
+
+### Precondizioni
+- L’utente è autenticato ed è autorizzato alla gestione degli utenti.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- Le informazioni sugli utenti e sui ruoli sono aggiornate correttamente.
+- Le modifiche sono memorizzate nel sistema.
+
+### Flusso principale
+1. L’Admin accede alla funzionalità di gestione utenti e ruoli.
+2. L’Admin seleziona l’utente da creare o modificare.
+3. L’Admin assegna o aggiorna il ruolo dell’utente.
+4. Il sistema valida le informazioni inserite.
+5. Il sistema salva le modifiche apportate.
+
+### Flussi alternativi
+- **A1 – Utente non valido**  
+  Se i dati dell’utente non sono corretti o incompleti, il sistema segnala l’errore e richiede una correzione.
+
+- **A2 – Operazione non autorizzata**  
+  Se l’utente non dispone dei permessi necessari, l’operazione viene negata.
