@@ -282,3 +282,40 @@ A seguito del completamento del servizio, il sistema registra le informazioni ec
 
 ---
 
+## UC8 – Reporting e analisi
+
+### Attori principali
+- Manager
+
+### Attori secondari
+- Sistema SmartCanteen
+
+### Descrizione
+Il caso d’uso descrive la consultazione di report e dati aggregati relativi al servizio mensa.  
+Il sistema consente al Manager di analizzare informazioni su pasti serviti, costi, sprechi e utilizzo del servizio, al fine di supportare decisioni strategiche.
+
+### Precondizioni
+- L’utente è autenticato ed è autorizzato alla consultazione dei report.
+- Sono disponibili dati storici relativi al servizio mensa.
+- Il sistema SmartCanteen è operativo.
+
+### Postcondizioni
+- I report richiesti sono visualizzati correttamente.
+- Nessun dato viene modificato.
+
+### Flusso principale
+1. Il Manager accede alla funzionalità di reporting.
+2. Il Manager seleziona il tipo di report da consultare.
+3. Il sistema elabora i dati richiesti.
+4. Il sistema visualizza il report.
+5. Il Manager analizza le informazioni mostrate.
+
+### Flussi alternativi
+- **A1 – Nessun dato disponibile**  
+  Se non sono disponibili dati per il periodo selezionato, il sistema informa il Manager.
+
+- **A2 – Errore di elaborazione**  
+  In caso di errore durante la generazione del report, il sistema segnala l’impossibilità di completare l’operazione.
+
+---
+
