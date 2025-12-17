@@ -6,18 +6,6 @@ In questa iterazione l’attenzione è focalizzata sul caso d’uso UC2 – Serv
 
 ---
 
-## Scopo dei diagrammi di sequenza
-
-I diagrammi di sequenza hanno lo scopo di:
-- descrivere le interazioni dinamiche tra attori e componenti del sistema;
-- chiarire l’ordine temporale delle operazioni;
-- assegnare in modo esplicito le responsabilità ai diversi componenti architetturali;
-- supportare la validazione dei requisiti funzionali definiti in Iterazione 0.
-
-Il livello di dettaglio adottato è coerente con l’Iterazione 1 del processo AMDD e non include aspetti implementativi o tecnologici.
-
----
-
 ## Diagramma di sequenza UC2 – Servizio del pasto
 
 ### Caso d’uso di riferimento
