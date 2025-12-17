@@ -243,3 +243,42 @@ Il sistema supporta lo Chef fornendo indicazioni basate sui dati storici relativ
 
 ---
 
+## UC7 – Contabilizzazione del pasto
+
+### Attori principali
+- Sistema SmartCanteen
+
+### Attori secondari
+- Manager  
+- Sistema di contabilità aziendale (esterno)
+
+### Descrizione
+Il caso d’uso descrive il processo di contabilizzazione di un pasto servito.  
+A seguito del completamento del servizio, il sistema registra le informazioni economiche associate al pasto e le associa al centro di costo del dipendente, rendendole disponibili per il reporting e l’analisi.
+
+### Precondizioni
+- Un pasto è stato servito correttamente.
+- Il ticket associato al pasto è in stato `SERVED`.
+- I dati di costo dei piatti e degli ingredienti sono disponibili nel sistema.
+
+### Postcondizioni
+- Una voce di contabilizzazione del pasto è stata generata.
+- Il costo del pasto è associato al centro di costo corretto.
+- I dati contabili sono memorizzati nel sistema.
+
+### Flusso principale
+1. Il sistema rileva il completamento del servizio del pasto.
+2. Il sistema calcola il costo complessivo del pasto.
+3. Il sistema associa il costo al centro di costo del dipendente.
+4. Il sistema registra una voce di contabilizzazione.
+5. Il sistema rende disponibili i dati per il reporting.
+
+### Flussi alternativi
+- **A1 – Dati di costo non disponibili**  
+  Se uno o più dati di costo non sono disponibili, il sistema segnala l’anomalia e sospende la contabilizzazione.
+
+- **A2 – Errore di registrazione**  
+  In caso di errore durante la registrazione della voce contabile, il sistema annulla l’operazione per garantire la coerenza dei dati.
+
+---
+
