@@ -152,6 +152,12 @@ Nessun parametro richiesto.
 
 ---
 
+#### Request Body
+
+Nessun body richiesto: {}
+
+---
+
 #### Success Response
 
 HTTP 200 – OK
@@ -189,3 +195,106 @@ HTTP 200 – OK
 - L’operazione è di sola lettura.
 - Non modifica lo stato dell’inventario.
 - Pensata per supportare decisioni operative della cucina.
+
+---
+
+### UC4 – Gestione di ricette e ingredienti
+
+Consente al personale autorizzato di creare e aggiornare ricette, specificando gli ingredienti necessari e le relative quantità.
+Le ricette sono utilizzate durante il servizio del pasto per verificare la disponibilità degli ingredienti.
+
+---
+
+#### Endpoint – Creazione ricetta
+
+POST /recipes
+
+---
+
+#### Request Body
+
+```json
+{
+  "name": "Pasta al pomodoro",
+  "ingredients": [
+    {
+      "ingredientId": "I01",
+      "quantity": 100
+    },
+    {
+      "ingredientId": "I02",
+      "quantity": 50
+    }
+  ]
+}
+```
+
+---
+
+#### Success Response
+
+HTTP 201 – Created
+
+```json
+{
+  "recipeId": "R01",
+  "name": "Pasta al pomodoro"
+}
+```
+
+---
+
+#### Endpoint – Aggiornamento ricetta
+
+PUT /recipes/{recipeId}
+
+---
+
+#### Path Parameters
+
+| Nome | Tipo | Descrizione |
+|----|----|------------|
+| recipeId | string | Identificativo univoco della ricetta|
+
+---
+
+#### Request Body
+
+```json
+{
+  "ingredients": [
+    {
+      "ingredientId": "I01",
+      "quantity": 120
+    }
+  ]
+}
+```
+
+---
+
+#### Success Response
+
+HTTP 200 – OK
+```json
+{
+  "recipeId": "R01",
+  "message": "Recipe updated successfully"
+}
+```
+---
+
+#### Error Responses
+
+| HTTP | errorCode | Descrizione |
+|------|-----------|------------|
+|400 | INVALID_RECIPE_DATA | Dati della ricetta non validi |
+|404 | RECIPE_NOT_FOUND | Ricetta inesistente |
+
+---
+
+#### Note
+
+- Le operazioni sono riservate a utenti autorizzati.
+- La modifica delle ricette non aggiorna automaticamente l’inventario.
+
