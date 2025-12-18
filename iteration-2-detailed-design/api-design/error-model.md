@@ -41,4 +41,5 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 - INVALID_DATE_RANGE
 - ACCOUNTING_DATA_UNAVAILABLE
 - INVALID_DATE
-
+- INVALID_EXPORT_PARAMETERS
+- EXPORT_FAILED
