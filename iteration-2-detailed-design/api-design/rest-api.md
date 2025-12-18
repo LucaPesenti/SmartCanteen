@@ -130,3 +130,62 @@ HTTP 200 – OK
 - Serve esclusivamente come validazione preliminare.
 
 ---
+
+## Inventory API
+
+### UC5 – Consultazione stato dell’inventario
+
+Consente di consultare lo stato corrente delle scorte di ingredienti presenti in magazzino.  
+L’operazione è utilizzata principalmente dal personale di cucina per verificare la disponibilità degli ingredienti.
+
+---
+
+#### Endpoint
+
+GET /inventory
+
+---
+
+#### Path Parameters
+
+Nessun parametro richiesto.
+
+---
+
+#### Success Response
+
+HTTP 200 – OK
+```json
+{
+  "ingredients": [
+    {
+      "ingredientId": "I01",
+      "name": "Pasta",
+      "quantity": 120,
+      "unit": "g"
+    },
+    {
+      "ingredientId": "I02",
+      "name": "Pomodoro",
+      "quantity": 80,
+      "unit": "g"
+    }
+  ]
+}
+```
+
+---
+
+#### Error Responses
+
+| HTTP | errorCode | Descrizione |
+|------|-----------|------------|
+| 500 | INVENTORY_UNAVAILABLE | Inventario temporaneamente non disponibile |
+
+---
+
+#### Note
+
+- L’operazione è di sola lettura.
+- Non modifica lo stato dell’inventario.
+- Pensata per supportare decisioni operative della cucina.
