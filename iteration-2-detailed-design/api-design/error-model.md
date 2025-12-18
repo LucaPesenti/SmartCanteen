@@ -40,4 +40,5 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 ### Accounting Errors
 - INVALID_DATE_RANGE
 - ACCOUNTING_DATA_UNAVAILABLE
+- INVALID_DATE
 
