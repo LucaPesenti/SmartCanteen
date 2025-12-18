@@ -36,3 +36,8 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 ### Recipe Errors
 - INVALID_RECIPE_DATA
 - RECIPE_NOT_FOUND
+
+### Accounting Errors
+- INVALID_DATE_RANGE
+- ACCOUNTING_DATA_UNAVAILABLE
+
