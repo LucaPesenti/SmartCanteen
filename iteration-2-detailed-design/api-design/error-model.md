@@ -21,11 +21,13 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 ## Error Codes
 
 ### Ticket Errors
-
 - INVALID_TICKET
 - TICKET_NOT_FOUND
 - TICKET_ALREADY_SERVED
 
 ### Inventory Errors
-
 - INSUFFICIENT_INGREDIENTS
+
+### Check-in Errors
+- INVALID_TICKET
+- TICKET_NOT_FOUND
