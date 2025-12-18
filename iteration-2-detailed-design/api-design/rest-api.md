@@ -298,3 +298,70 @@ HTTP 200 – OK
 - Le operazioni sono riservate a utenti autorizzati.
 - La modifica delle ricette non aggiorna automaticamente l’inventario.
 
+---
+
+## Accounting API
+
+### UC7 – Consultazione report dei pasti erogati
+
+Consente di consultare i report relativi ai pasti erogati in un determinato periodo di tempo.  
+L’operazione è destinata al personale amministrativo e supporta attività di monitoraggio e analisi.
+
+---
+
+#### Endpoint
+
+GET /accounting-entries
+
+---
+
+#### Query Parameters
+
+| Nome | Tipo | Descrizione |
+|----|----|------------|
+| from | string (ISO date) | Data di inizio del periodo di riferimento | 
+| to | string (ISO date) | Data di fine del periodo di riferimento | 
+
+---
+
+#### Success Response
+
+HTTP 200 – OK
+```json
+{
+  "entries": [
+    {
+      "entryId": "A001",
+      "ticketId": "T12345",
+      "mealName": "Pasta al pomodoro",
+      "price": 5.50,
+      "servedAt": "2025-05-18T12:34:56"
+    },
+    {
+      "entryId": "A002",
+      "ticketId": "T12346",
+      "mealName": "Insalata",
+      "price": 4.00,
+      "servedAt": "2025-05-18T13:10:12"
+    }
+  ]
+}
+```
+
+---
+
+#### Error Responses
+
+| HTTP | errorCode | Descrizione |
+|------|-----------|------------|
+|400 | INVALID_DATE_RANGE | Intervallo di date non valido |
+|500 | ACCOUNTING_DATA_UNAVAILABLE | Dati contabili temporaneamente non disponibili |
+
+---
+
+#### Note
+
+- L’operazione è di sola lettura.
+- I risultati possono essere filtrati per intervallo temporale.
+- I dati restituiti derivano dalle registrazioni effettuate durante UC2.
+
