@@ -27,6 +27,7 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 
 ### Inventory Errors
 - INSUFFICIENT_INGREDIENTS
+- INVENTORY_UNAVAILABLE
 
 ### Check-in Errors
 - INVALID_TICKET
