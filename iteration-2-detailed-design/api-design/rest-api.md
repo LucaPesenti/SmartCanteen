@@ -365,3 +365,53 @@ HTTP 200 – OK
 - I risultati possono essere filtrati per intervallo temporale.
 - I dati restituiti derivano dalle registrazioni effettuate durante UC2.
 
+---
+
+### UC8 – Consultazione stato operativo della mensa
+
+Consente di consultare informazioni aggregate sullo stato operativo corrente della mensa, inclusi il numero di pasti erogati e l’incasso totale nella giornata in corso.
+
+---
+
+#### Endpoint
+
+GET /accounting-entries/summary
+
+---
+
+#### Query Parameters
+
+| Nome | Tipo | Descrizione |
+|----|----|------------|
+| date | string (ISO date) | Data di riferimento per il riepilogo | 
+
+---
+
+#### Success Response
+
+```json
+HTTP 200 – OK
+
+{
+  "date": "2025-05-18",
+  "mealsServed": 245,
+  "totalRevenue": 1280.50
+}
+```
+
+---
+
+#### Error Responses
+
+| HTTP | errorCode | Descrizione |
+|------|-----------|------------|
+| 400 | INVALID_DATE | Data non valida |
+| 500 | ACCOUNTING_DATA_UNAVAILABLE | Dati contabili temporaneamente non disponibili |
+
+---
+
+#### Note
+
+- L’operazione restituisce dati aggregati.
+- È pensata per il monitoraggio operativo in tempo quasi reale.
+- I dati derivano dalle registrazioni effettuate durante il servizio dei pasti.
