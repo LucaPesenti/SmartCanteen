@@ -415,3 +415,57 @@ HTTP 200 – OK
 - L’operazione restituisce dati aggregati.
 - È pensata per il monitoraggio operativo in tempo quasi reale.
 - I dati derivano dalle registrazioni effettuate durante il servizio dei pasti.
+
+---
+
+### UC9 – Esportazione dati amministrativi
+
+Consente di esportare i dati relativi ai pasti erogati e agli incassi in un formato strutturato, per fini amministrativi e di rendicontazione. 
+L’operazione è destinata al personale amministrativo.
+
+---
+
+#### Endpoint
+
+GET /accounting-entries/export
+
+---
+
+#### Query Parameters
+
+| Nome | Tipo | Descrizione |
+|----|----|------------|
+| from | string (ISO date) | Data di inizio del periodo di esportazione | 
+| to | string (ISO date) | Data di inizio del periodo di esportazione | 
+| format | string | Formato di esportazione | 
+
+---
+
+#### Success Response
+
+HTTP 200 – OK
+```json
+{
+  "format": "CSV",
+  "exportedRecords": 320,
+  "generatedAt": "2025-05-18T18:30:00"
+}
+```
+
+---
+
+#### Error Responses
+
+| HTTP | errorCode | Descrizione |
+|------|-----------|------------|
+| 400 | INVALID_EXPORT_PARAMETERS | Parametri di esportazione non validi |
+| 500 | EXPORT_FAILED | Errore durante la generazione dell’esportazione |
+
+---
+
+#### Note
+
+- L’operazione non modifica lo stato del sistema.
+- Il formato di esportazione è selezionabile tramite parametro.
+- I dati esportati derivano dalle registrazioni contabili.
+
