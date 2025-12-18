@@ -32,3 +32,7 @@ Tutte le risposte di errore seguono il formato JSON seguente:
 ### Check-in Errors
 - INVALID_TICKET
 - TICKET_NOT_FOUND
+
+### Recipe Errors
+- INVALID_RECIPE_DATA
+- RECIPE_NOT_FOUND
