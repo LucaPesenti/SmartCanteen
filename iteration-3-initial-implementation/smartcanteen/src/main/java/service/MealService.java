@@ -1,0 +1,71 @@
+package service;
+
+import model.AccountingEntry;
+import model.Ingredient;
+import model.Meal;
+import model.Ticket;
+
+import repository.AccountingRepository;
+import repository.InventoryRepository;
+import repository.TicketRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+import java.util.UUID;
+
+@Service
+public class MealService {
+
+    private final TicketRepository ticketRepository;
+    private final InventoryRepository inventoryRepository;
+    private final AccountingRepository accountingRepository;
+
+    public MealService(TicketRepository ticketRepository,
+                       InventoryRepository inventoryRepository,
+                       AccountingRepository accountingRepository) {
+        this.ticketRepository = ticketRepository;
+        this.inventoryRepository = inventoryRepository;
+        this.accountingRepository = accountingRepository;
+    }
+
+    public Meal serveMeal(String ticketId) {
+
+        Ticket ticket = ticketRepository.findById(ticketId)
+                .orElseThrow(() -> new TicketNotFoundException(ticketId));
+
+        if (!ticket.isValid() || ticket.isUsed()) {
+            throw new InvalidTicketException("Ticket is invalid or already used");
+        }
+
+        Meal meal = ticket.getMeal();
+
+        checkAndConsumeIngredients(meal);
+
+        ticket.markAsUsed();
+        ticketRepository.save(ticket);
+
+        AccountingEntry entry = new AccountingEntry(
+                UUID.randomUUID().toString(),
+                ticket.getId(),
+                meal.getPrice()
+        );
+        accountingRepository.save(entry);
+
+        return meal;
+    }
+
+    private void checkAndConsumeIngredients(Meal meal) {
+        for (Map.Entry<String, Integer> required : meal.getIngredients().entrySet()) {
+
+            Ingredient ingredient = inventoryRepository.findById(required.getKey());
+
+            if (ingredient == null || ingredient.getQuantity() < required.getValue()) {
+                throw new InsufficientIngredientsException(required.getKey());
+            }
+
+            ingredient.decrease(required.getValue());
+            inventoryRepository.save(ingredient);
+        }
+    }
+}
