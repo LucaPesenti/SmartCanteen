@@ -1,4 +1,4 @@
-# Iterazione 2 – Detailed Design
+# Iterazione 2 – Design dettagliato
 
 ## Obiettivo dell’iterazione
 
