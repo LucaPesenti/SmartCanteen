@@ -4,7 +4,11 @@
 
 L’obiettivo dell’Iterazione 2 è stato quello di trasformare i modelli concettuali e funzionali definiti nelle iterazioni precedenti in una progettazione tecnica dettagliata, pronta per l’implementazione.
 
-In particolare, questa iterazione si è concentrata sulla definizione della struttura statica del sistema e dei contratti di comunicazione esposti verso l’esterno.
+In questa fase il focus è stato posto sul **design architetturale e di dettaglio**, chiarendo:
+- la struttura statica del sistema,
+- l’organizzazione dei componenti software,
+- le modalità di distribuzione a runtime,
+- e la logica algoritmica dei principali casi d’uso.
 
 ---
 
@@ -12,12 +16,26 @@ In particolare, questa iterazione si è concentrata sulla definizione della stru
 
 Durante l’Iterazione 2 sono stati realizzati i seguenti artefatti:
 
-- Diagramma delle classi complessivo, che descrive la struttura statica del sistema e le responsabilità delle principali entità e servizi.
-- Diagramma dei componenti, che rappresenta l’architettura logica del sistema, evidenziando i principali componenti software, i layer architetturali e le dipendenze tra di essi.
-- Specifica delle API REST, organizzata per risorse e casi d’uso, comprensiva di endpoint, parametri, risposte e codici di errore.
-- Modello unificato di gestione degli errori REST, condiviso tra tutti gli endpoint per garantire coerenza semantica e semplicità di integrazione lato client.
+- **Diagramma delle classi**
+  - Descrive la struttura statica del sistema, le principali entità di dominio, i servizi applicativi e le loro relazioni.
 
-Non sono stati prodotti nuovi diagrammi di sequenza, in quanto i flussi dinamici principali erano già stati analizzati e validati nell’Iterazione 1 e non hanno subito variazioni progettuali significative tali da richiedere un ulteriore raffinamento.
+- **Specifica delle API REST**
+  - Definizione formale degli endpoint REST, delle risorse esposte, dei payload JSON, dei codici di risposta e del modello di gestione degli errori.
+
+- **Component Diagram**
+  - Rappresenta la scomposizione del sistema in componenti logici (Controller, Service, Repository, Domain Model) e le loro dipendenze.
+  - Evidenzia la separazione delle responsabilità e l’aderenza a un’architettura a strati.
+
+- **Deployment Diagram**
+  - Descrive la configurazione del sistema a runtime, includendo:
+    - nodo applicativo (Spring Boot),
+    - database relazionale,
+    - client esterni (Postman / browser).
+  - Chiarisce le interazioni tra nodi fisici e artefatti software.
+
+- **Design algoritmico (design in piccolo)**
+  - Documentazione degli algoritmi dei principali casi d’uso, espressi in pseudocodice e corredati da analisi della complessità temporale.
+  - In particolare, è stato dettagliato il flusso completo del caso d’uso UC2 – Servizio del Pasto, cuore del sistema SmartCanteen.
 
 ---
 
@@ -39,19 +57,22 @@ I casi d’uso di supporto interno sono stati integrati all’interno delle oper
 
 ## Considerazioni progettuali
 
-La progettazione ha seguito i principi RESTful e una chiara separazione delle responsabilità tra:
-- livello di presentazione (controller REST),
-- livello applicativo (servizi),
-- livello di persistenza (repository),
-- modello di dominio.
+La progettazione è stata guidata dai seguenti principi:
 
-Il diagramma dei componenti ha consentito di validare l’architettura complessiva prima dell’implementazione, verificando la correttezza delle dipendenze tra i layer e l’assenza di accoppiamenti impropri.
+- separazione chiara delle responsabilità (layered architecture),
+- aderenza ai principi RESTful per le API,
+- disaccoppiamento tra logica di business e persistenza,
+- coerenza tra modelli UML e struttura del codice previsto.
 
 L’assenza di codice implementativo in questa iterazione è intenzionale e coerente con l’approccio AMDD adottato: l’Iterazione 2 ha avuto come scopo la definizione del “come” il sistema sarà costruito, senza anticipare l’implementazione.
 
 ---
 
-## Stato finale dell’iterazione
+Al termine dell’Iterazione 2, il progetto SmartCanteen dispone di:
 
-Al termine dell’Iterazione 2, il sistema SmartCanteen dispone di una progettazione tecnica completa, coerente e validata a livello architetturale, sufficiente per avviare l’implementazione del codice applicativo nelle iterazioni successive.
+- una progettazione architetturale completa,
+- una definizione chiara delle API,
+- una visione coerente della distribuzione del sistema,
+- una descrizione dettagliata degli algoritmi di business.
 
+Questa base progettuale è risultata sufficiente e stabile per avviare con successo l’implementazione del sistema nelle iterazioni successive.
