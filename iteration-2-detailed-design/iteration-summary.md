@@ -68,6 +68,8 @@ L’assenza di codice implementativo in questa iterazione è intenzionale e coer
 
 ---
 
+## Stato finale dell’iterazione
+
 Al termine dell’Iterazione 2, il progetto SmartCanteen dispone di:
 
 - una progettazione architetturale completa,
