@@ -1,4 +1,4 @@
-# Analisi statica del codice - Iterazione 3**
+# Analisi statica del codice - Iterazione 3
 
 L’obiettivo dell’analisi statica è valutare la qualità strutturale del codice sorgente del sistema *SmartCanteen*, individuando eventuali criticità architetturali, problemi di accoppiamento, complessità e manutenibilità, senza eseguire il software.
 
