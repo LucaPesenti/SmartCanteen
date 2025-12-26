@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "54b37cf2-3495-4348-93e8-cf5c34e9ac6f",
+		"name": "SmartCanteen – API Tests",
+		"description": "Postman collection for SmartCanteen REST API validation.  \nCovers main use cases and error scenarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14674391"
+	},
+	"item": [
+		{
+			"name": "UC1 – Check-in valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Employee ID returned\", function () {",
+							"    pm.expect(pm.response.json().employeeId).to.eql(\"E1\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/employees/E1/check-in",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"employees",
+						"E1",
+						"check-in"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "UC1 – Check-in valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/employees/E1/check-in",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employees",
+								"E1",
+								"check-in"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Dec 2025 22:58:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"employeeId\": \"E1\",\n    \"checkInTime\": \"2025-12-25T23:58:16.8215651\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UC1 – Check-in non valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error code returned\", function () {\r",
+							"    pm.expect(pm.response.json().errorCode).to.eql(\"EMPLOYEE_NOT_FOUND\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/employees/UNKNOWN/check-in",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"employees",
+						"UNKNOWN",
+						"check-in"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UC1 – Check-in non valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/employees/UNKNOWN/check-in",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employees",
+								"UNKNOWN",
+								"check-in"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Dec 2025 22:58:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"EMPLOYEE_NOT_FOUND\",\n    \"message\": \"Employee not found: UNKNOWN\",\n    \"timestamp\": \"2025-12-25T23:58:30.0129609\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UC2 – Servizio pasto valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Meal served successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Meal name exists\", function () {\r",
+							"    pm.expect(pm.response.json().mealName).to.exist;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/tickets/T1/serve",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"tickets",
+						"T1",
+						"serve"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UC2 – Servizio pasto valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/tickets/T1/serve",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tickets",
+								"T1",
+								"serve"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Dec 2025 23:22:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ticketId\": \"T1\",\n    \"mealName\": \"Pasta al pomodoro\",\n    \"price\": 5.5,\n    \"servedAt\": \"2025-12-26T00:22:39.2453668\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UC2 – Ticket non valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Error code is correct\", function () {\r",
+							"    pm.expect(pm.response.json().errorCode).to.eql(\"TICKET_NOT_FOUND\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/tickets/INVALID/serve",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"tickets",
+						"INVALID",
+						"serve"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UC2 – Ticket non valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/tickets/INVALID/serve",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tickets",
+								"INVALID",
+								"serve"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Dec 2025 23:21:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"TICKET_NOT_FOUND\",\n    \"message\": \"Ticket not found: INVALID\",\n    \"timestamp\": \"2025-12-26T00:21:12.6450523\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
