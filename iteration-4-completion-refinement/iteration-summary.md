@@ -1,6 +1,6 @@
 # Iterazione 4 – GUI Desktop e Integrazione con Backend REST
 
-### Obiettivi dell’iterazione
+## Obiettivi dell’iterazione
 
 L’obiettivo principale di questa iterazione è stato lo sviluppo di una **GUI desktop funzionale** per il sistema SmartCanteen, in grado di interagire correttamente con il backend REST già implementato.
 
@@ -12,7 +12,7 @@ In particolare, l’iterazione ha mirato a:
 
 ---
 
-### Funzionalità implementate
+## Funzionalità implementate
 
 Durante questa iterazione sono state implementate le seguenti funzionalità:
 
@@ -29,7 +29,7 @@ Durante questa iterazione sono state implementate le seguenti funzionalità:
 
 ---
 
-### Componenti principali realizzati
+## Componenti principali realizzati
 
 | Componente | Descrizione |
 |-----------|------------|
@@ -41,7 +41,7 @@ Durante questa iterazione sono state implementate le seguenti funzionalità:
 
 ---
 
-### Casi d’uso coperti
+## Casi d’uso coperti
 
 | Caso d’uso | Stato |
 |-----------|-------|
@@ -52,7 +52,7 @@ Entrambi i casi d’uso sono completamente supportati dalla GUI e correttamente 
 
 ---
 
-### Aspetti tecnici rilevanti
+## Aspetti tecnici rilevanti
 
 - Utilizzo di **WindowBuilder** per la progettazione delle schermate Swing
 - Comunicazione sincrona tramite `java.net.http.HttpClient`
@@ -63,7 +63,7 @@ Entrambi i casi d’uso sono completamente supportati dalla GUI e correttamente 
 
 ---
 
-### Miglioramenti rispetto alle iterazioni precedenti
+## Miglioramenti rispetto alle iterazioni precedenti
 
 - Introduzione di una GUI completa al posto dell’interazione esclusivamente via API
 - Maggiore usabilità e chiarezza operativa
