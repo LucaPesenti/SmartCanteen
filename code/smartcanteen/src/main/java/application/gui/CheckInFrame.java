@@ -1,183 +1,160 @@
 package application.gui;
 
 import java.awt.EventQueue;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.gui.client.RestClient;
-
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
-import java.awt.Insets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
+import application.gui.util.GuiUtils;
 
 public class CheckInFrame extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtEmployeeId;
-	private JLabel lbLabel;
-	private JButton btnCheckIn;
-	private JTextArea txtResult;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CheckInFrame frame = new CheckInFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the frame.
-	 */
-	public CheckInFrame() {
-		setResizable(false);
-		setSize(new Dimension(450, 250));
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    private JPanel contentPane;
+    private JTextField txtEmployeeId;
+    private JTextArea txtResult;
 
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel = new JLabel("Check-in Dipendente");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
-		contentPane.add(lblNewLabel, BorderLayout.NORTH);
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
-		
-		lbLabel = new JLabel("ID Dipendente:");
-		GridBagConstraints gbc_lbLabel = new GridBagConstraints();
-		gbc_lbLabel.insets = new Insets(5, 10, 5, 5);
-		gbc_lbLabel.anchor = GridBagConstraints.EAST;
-		gbc_lbLabel.gridx = 0;
-		gbc_lbLabel.gridy = 0;
-		panel.add(lbLabel, gbc_lbLabel);
-		
-		txtEmployeeId = new JTextField();
-		GridBagConstraints gbc_txtEmployeeId = new GridBagConstraints();
-		gbc_txtEmployeeId.insets = new Insets(5, 5, 5, 10);
-		gbc_txtEmployeeId.weightx = 1.0;
-		gbc_txtEmployeeId.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtEmployeeId.gridx = 1;
-		gbc_txtEmployeeId.gridy = 0;
-		panel.add(txtEmployeeId, gbc_txtEmployeeId);
-		txtEmployeeId.setColumns(15);
-		txtEmployeeId.setToolTipText("Inserire un ID valido (es. E1)");
-		
-		btnCheckIn = new JButton("Check-in");
-		GridBagConstraints gbc_btnCheckIn = new GridBagConstraints();
-		gbc_btnCheckIn.gridwidth = 2;
-		gbc_btnCheckIn.insets = new Insets(10, 10, 10, 10);
-		gbc_btnCheckIn.gridx = 0;
-		gbc_btnCheckIn.gridy = 1;
-		panel.add(btnCheckIn, gbc_btnCheckIn);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.weighty = 1.0;
-		gbc_scrollPane.weightx = 1.0;
-		gbc_scrollPane.gridwidth = 2;
-		gbc_scrollPane.insets = new Insets(5, 10, 10, 10);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 2;
-		panel.add(scrollPane, gbc_scrollPane);
-		
-		txtResult = new JTextArea();
-		txtResult.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		txtResult.setWrapStyleWord(true);
-		txtResult.setRows(3);
-		txtResult.setLineWrap(true);
-		txtResult.setEditable(false);
-		scrollPane.setViewportView(txtResult);
-		
-		JButton btnBack = new JButton("Torna al menu");
-		contentPane.add(btnBack, BorderLayout.SOUTH);
-		
-		btnBack.addActionListener(e -> {
-		    dispose();
-		    new MainWindow().setVisible(true);
-		});
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                new CheckInFrame().setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-		
-		btnCheckIn.addActionListener(e -> handleCheckIn());
-	}
+    public CheckInFrame() {
+        setTitle("Check-in Dipendente");
+        GuiUtils.applyAppIcon(this);
+        setResizable(false);
+        setSize(new Dimension(480, 320));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-	private void handleCheckIn() {
-	    try {
-	        String employeeId = txtEmployeeId.getText().trim();
+        contentPane = new JPanel(new BorderLayout(10, 10));
+        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+        setContentPane(contentPane);
 
-	        if (employeeId.isEmpty()) {
-	            txtResult.setText("Inserire un ID dipendente valido.");
-	            return;
-	        }
+        JLabel lblTitle = new JLabel("Check-in Dipendente");
+        lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitle.setFont(new Font("SansSerif", Font.BOLD, 18));
+        contentPane.add(lblTitle, BorderLayout.NORTH);
 
-	        String response = RestClient.post(
-	                "/employees/" + employeeId + "/check-in",
-	                ""
-	        );
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        contentPane.add(centerPanel, BorderLayout.CENTER);
 
-	        ObjectMapper mapper = new ObjectMapper();
-	        JsonNode root = mapper.readTree(response);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(6, 6, 6, 6);
 
-	        String id = root.get("employeeId").asText();
-	        String time = root.get("checkInTime").asText();
+        JLabel lblEmployeeId = new JLabel("ID Dipendente:");
+        lblEmployeeId.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
+        centerPanel.add(lblEmployeeId, gbc);
 
-	        LocalDateTime dateTime = LocalDateTime.parse(time);
-	        DateTimeFormatter formatter =
-	                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        txtEmployeeId = new JTextField(15);
+        txtEmployeeId.setToolTipText("Inserire un ID valido (es. E1)");
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        centerPanel.add(txtEmployeeId, gbc);
 
-	        txtResult.setText(
-	        		"Check-in completato con successo\n" +
-	        		"------------------------------------------------------\n" +
-	                "Dipendente: " + id + "\n" +
-	                "Orario: " + dateTime.format(formatter)
-	        );
-	        txtResult.setForeground(new java.awt.Color(0, 120, 0));
+        JButton btnCheckIn = new JButton("Check-in Dipendente");
+        btnCheckIn.setIcon(GuiUtils.loadIcon("checkin.png", 22));
+        btnCheckIn.setHorizontalAlignment(SwingConstants.CENTER);
+        btnCheckIn.setHorizontalTextPosition(SwingConstants.RIGHT);
+        btnCheckIn.setVerticalTextPosition(SwingConstants.CENTER);
+        btnCheckIn.setIconTextGap(10);
+        btnCheckIn.setMargin(new Insets(8, 16, 8, 16));
+        btnCheckIn.setFocusable(false);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
+        centerPanel.add(btnCheckIn, gbc);
 
-	    } catch (Exception ex) {
-	        txtResult.setText(
-	                "Errore durante il check-in:\n" +
-	                ex.getMessage()
-	        );
-	        txtResult.setForeground(java.awt.Color.RED);
-	    }
-	}
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Esito operazione"));
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        centerPanel.add(scrollPane, gbc);
 
+        txtResult = new JTextArea();
+        txtResult.setEditable(false);
+        txtResult.setLineWrap(true);
+        txtResult.setWrapStyleWord(true);
+        txtResult.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        txtResult.setBorder(new EmptyBorder(5, 5, 5, 5));
+        scrollPane.setViewportView(txtResult);
 
+        JButton btnBack = new JButton("Torna al menu");
+        contentPane.add(btnBack, BorderLayout.SOUTH);
+
+        btnCheckIn.addActionListener(e -> handleCheckIn());
+        btnBack.addActionListener(e -> {
+            dispose();
+            new MainWindow().setVisible(true);
+        });
+    }
+
+    private void handleCheckIn() {
+        try {
+            String employeeId = txtEmployeeId.getText().trim();
+
+            if (employeeId.isEmpty()) {
+                txtResult.setForeground(java.awt.Color.RED);
+                txtResult.setText("Inserire un ID dipendente valido.");
+                return;
+            }
+
+            String response = RestClient.post(
+                    "/employees/" + employeeId + "/check-in",
+                    ""
+            );
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(response);
+
+            String id = root.get("employeeId").asText();
+            String time = root.get("checkInTime").asText();
+
+            LocalDateTime dateTime = LocalDateTime.parse(time);
+            DateTimeFormatter formatter =
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+            txtResult.setForeground(new java.awt.Color(0, 120, 0));
+            txtResult.setText(
+                    "Check-in completato con successo\n\n" +
+                    "ID Dipendente: " + id + "\n" +
+                    "Orario: " + dateTime.format(formatter)
+            );
+
+        } catch (Exception ex) {
+            txtResult.setForeground(java.awt.Color.RED);
+            txtResult.setText(
+                    "Errore durante il check-in:\n" +
+                    ex.getMessage()
+            );
+        }
+    }
 }
