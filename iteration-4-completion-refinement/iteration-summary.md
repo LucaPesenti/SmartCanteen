@@ -41,17 +41,6 @@ Durante questa iterazione sono state implementate le seguenti funzionalità:
 
 ---
 
-## Casi d’uso coperti
-
-| Caso d’uso | Stato |
-|-----------|-------|
-| UC1 – Check-in dipendente | ✅ Completato |
-| UC2 – Servizio pasto | ✅ Completato |
-
-Entrambi i casi d’uso sono completamente supportati dalla GUI e correttamente integrati con il backend REST.
-
----
-
 ## Aspetti tecnici rilevanti
 
 - Utilizzo di **WindowBuilder** per la progettazione delle schermate Swing
