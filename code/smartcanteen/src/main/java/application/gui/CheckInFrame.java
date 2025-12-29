@@ -19,8 +19,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -33,8 +31,8 @@ public class CheckInFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField txtEmployeeId;
+	private JLabel lbLabel;
 	private JButton btnCheckIn;
 	private JTextArea txtResult;
 	
@@ -82,23 +80,24 @@ public class CheckInFrame extends JFrame {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JLabel lblNewLabel = new JLabel("ID Dipendente:");
-		GridBagConstraints gbc_txtEmployeeId = new GridBagConstraints();
-		gbc_txtEmployeeId.insets = new Insets(5, 10, 5, 5);
-		gbc_txtEmployeeId.anchor = GridBagConstraints.EAST;
-		gbc_txtEmployeeId.gridx = 0;
-		gbc_txtEmployeeId.gridy = 0;
-		panel.add(txtEmployeeId, gbc_txtEmployeeId);
+		lbLabel = new JLabel("ID Dipendente:");
+		GridBagConstraints gbc_lbLabel = new GridBagConstraints();
+		gbc_lbLabel.insets = new Insets(5, 10, 5, 5);
+		gbc_lbLabel.anchor = GridBagConstraints.EAST;
+		gbc_lbLabel.gridx = 0;
+		gbc_lbLabel.gridy = 0;
+		panel.add(lbLabel, gbc_lbLabel);
 		
 		txtEmployeeId = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(5, 5, 5, 10);
-		gbc_textField.weightx = 1.0;
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(15);
+		GridBagConstraints gbc_txtEmployeeId = new GridBagConstraints();
+		gbc_txtEmployeeId.insets = new Insets(5, 5, 5, 10);
+		gbc_txtEmployeeId.weightx = 1.0;
+		gbc_txtEmployeeId.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtEmployeeId.gridx = 1;
+		gbc_txtEmployeeId.gridy = 0;
+		panel.add(txtEmployeeId, gbc_txtEmployeeId);
+		txtEmployeeId.setColumns(15);
+		txtEmployeeId.setToolTipText("Inserire un ID valido (es. E1)");
 		
 		btnCheckIn = new JButton("Check-in");
 		GridBagConstraints gbc_btnCheckIn = new GridBagConstraints();
@@ -120,6 +119,7 @@ public class CheckInFrame extends JFrame {
 		panel.add(scrollPane, gbc_scrollPane);
 		
 		txtResult = new JTextArea();
+		txtResult.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		txtResult.setWrapStyleWord(true);
 		txtResult.setRows(3);
 		txtResult.setLineWrap(true);
@@ -163,16 +163,19 @@ public class CheckInFrame extends JFrame {
 	                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
 	        txtResult.setText(
-	                "Check-in completato con successo\n\n" +
+	        		"Check-in completato con successo\n" +
+	        		"------------------------------------------------------\n" +
 	                "Dipendente: " + id + "\n" +
 	                "Orario: " + dateTime.format(formatter)
 	        );
+	        txtResult.setForeground(new java.awt.Color(0, 120, 0));
 
 	    } catch (Exception ex) {
 	        txtResult.setText(
 	                "Errore durante il check-in:\n" +
 	                ex.getMessage()
 	        );
+	        txtResult.setForeground(java.awt.Color.RED);
 	    }
 	}
 

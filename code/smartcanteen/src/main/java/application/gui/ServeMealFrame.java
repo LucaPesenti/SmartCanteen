@@ -95,6 +95,7 @@ public class ServeMealFrame extends JFrame {
 		gbc_txtTicketId.gridy = 0;
 		panel.add(txtTicketId, gbc_txtTicketId);
 		txtTicketId.setColumns(15);
+		txtTicketId.setToolTipText("Inserire un ID ticket valido (es. T1)");
 		
 		JButton btnServeMeal = new JButton("Servi Pasto");
 		GridBagConstraints gbc_btnServeMeal = new GridBagConstraints();
@@ -116,6 +117,7 @@ public class ServeMealFrame extends JFrame {
 		panel.add(scrollPane, gbc_scrollPane);
 		
 		txtResult = new JTextArea();
+		txtResult.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		txtResult.setRows(3);
 		txtResult.setWrapStyleWord(true);
 		txtResult.setLineWrap(true);
@@ -161,18 +163,21 @@ public class ServeMealFrame extends JFrame {
 	        String formattedDate = dateTime.format(formatter);
 
 	        txtResult.setText(
-	                "Pasto servito correttamente\n\n" +
+	        		"Pasto servito correttamente\n" +
+	        		"------------------------------------------------------\n" +
 	                "Ticket: " + ticketId + "\n" +
 	                "Piatto: " + mealName + "\n" +
 	                "Prezzo: € " + String.format("%.2f", price) + "\n" +
 	                "Orario: " + formattedDate
 	        );
+	        txtResult.setForeground(new java.awt.Color(0, 120, 0));
 
 	    } catch (Exception ex) {
 	        txtResult.setText(
 	                "Errore durante il servizio pasto:\n" +
 	                ex.getMessage()
 	        );
+	        txtResult.setForeground(java.awt.Color.RED);
 	    }
 	}
 
