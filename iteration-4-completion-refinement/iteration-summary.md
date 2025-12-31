@@ -2,60 +2,114 @@
 
 ## Obiettivi dell’iterazione
 
-L’obiettivo principale di questa iterazione è stato lo sviluppo di una **GUI desktop funzionale** per il sistema SmartCanteen, in grado di interagire correttamente con il backend REST già implementato.
+L’obiettivo principale dell’Iterazione 4 è stato lo sviluppo di una **interfaccia grafica desktop** per il sistema SmartCanteen, in grado di interagire correttamente con il backend REST implementato nelle iterazioni precedenti.
 
-In particolare, l’iterazione ha mirato a:
-- fornire un’interfaccia grafica chiara e utilizzabile;
-- integrare correttamente le API REST esistenti;
-- supportare i casi d’uso principali del sistema;
-- migliorare la qualità complessiva della presentazione del progetto.
+In particolare, questa iterazione ha mirato a:
 
----
-
-## Funzionalità implementate
-
-Durante questa iterazione sono state implementate le seguenti funzionalità:
-
-- **GUI desktop basata su Java Swing**
-- Navigazione tramite finestra principale (`MainWindow`)
-- Gestione dei casi d’uso:
-  - **UC1 – Check-in del dipendente**
-  - **UC2 – Servizio del pasto**
-- Comunicazione con il backend tramite client HTTP dedicato (`RestClient`)
-- Parsing delle risposte JSON e visualizzazione user-friendly dei risultati
-- Gestione degli errori con feedback visivo differenziato
-- Icone personalizzate per applicazione e pulsanti
-- Miglioramenti grafici e di usabilità
+* fornire un’interfaccia grafica chiara, coerente e utilizzabile;
+* integrare le API REST esistenti tramite un client dedicato;
+* supportare operativamente i casi d’uso principali del sistema;
+* migliorare la qualità complessiva della presentazione e dell’esperienza utente del progetto.
 
 ---
 
-## Componenti principali realizzati
+## Attività svolte
 
-| Componente | Descrizione |
-|-----------|------------|
-| `MainWindow` | Finestra principale di navigazione |
-| `CheckInFrame` | Interfaccia per il check-in del dipendente |
-| `ServeMealFrame` | Interfaccia per il servizio del pasto |
-| `RestClient` | Client HTTP per chiamate REST |
-| `GuiUtils` | Utility grafiche (icone, scaling, app icon) |
+Durante l’Iterazione 4 sono state svolte attività di **sviluppo e integrazione lato client**, focalizzate sulla realizzazione di una GUI desktop e sulla sua connessione con il backend REST.
+
+Le principali attività hanno incluso:
+
+* progettazione delle schermate Swing;
+* implementazione della navigazione tra le finestre;
+* integrazione delle chiamate REST;
+* gestione degli errori e dei feedback utente;
+* miglioramento dell’aspetto grafico e dell’usabilità.
+
+---
+
+## Artefatti prodotti
+
+Nel corso dell’Iterazione 4 sono stati realizzati i seguenti artefatti:
+
+* **GUI desktop Java Swing**
+
+  * Interfaccia grafica completa per l’interazione con il sistema SmartCanteen.
+
+* **Finestra principale (`MainWindow`)**
+
+  * Punto di accesso ai casi d’uso principali e navigazione tra le schermate.
+
+* **Schermate dedicate ai casi d’uso**
+
+  * `CheckInFrame` per UC1 – Check-in del dipendente.
+  * `ServeMealFrame` per UC2 – Servizio del pasto.
+
+* **Client REST**
+
+  * Componente `RestClient` per la comunicazione HTTP con il backend.
+
+* **Utility grafiche**
+
+  * Classe `GuiUtils` per la gestione di icone, scaling e icona dell’applicazione.
+
+* **Documentazione grafica**
+
+  * Screenshot delle schermate principali.
+  * File `gui-description.md` con descrizione dettagliata dell’interfaccia.
+
+---
+
+## Copertura dei casi d’uso
+
+La GUI realizzata in questa iterazione consente l’esecuzione completa dei seguenti casi d’uso:
+
+* UC1 – Check-in del dipendente
+* UC2 – Servizio del pasto
+
+I casi d’uso rimanenti non sono esposti tramite interfaccia grafica in questa fase e rimangono accessibili esclusivamente via API REST, in linea con gli obiettivi dell’iterazione.
 
 ---
 
 ## Aspetti tecnici rilevanti
 
-- Utilizzo di **WindowBuilder** per la progettazione delle schermate Swing
-- Comunicazione sincrona tramite `java.net.http.HttpClient`
-- Parsing JSON con **Jackson**
-- Separazione tra logica di presentazione e comunicazione REST
-- Validazione degli input lato client
-- Formattazione leggibile delle date e dei dati restituiti dal backend
+Dal punto di vista tecnico, l’Iterazione 4 ha introdotto:
+
+* utilizzo di **Java Swing** per la realizzazione della GUI;
+* progettazione delle schermate tramite **WindowBuilder**;
+* comunicazione sincrona con il backend tramite `java.net.http.HttpClient`;
+* parsing delle risposte JSON tramite **Jackson**;
+* separazione tra logica di presentazione e comunicazione REST;
+* validazione degli input lato client;
+* formattazione user-friendly dei dati restituiti dal backend.
 
 ---
 
-## Miglioramenti rispetto alle iterazioni precedenti
+## Considerazioni progettuali
 
-- Introduzione di una GUI completa al posto dell’interazione esclusivamente via API
-- Maggiore usabilità e chiarezza operativa
-- Migliore presentazione del progetto tramite schermate documentate
-- Feedback immediato all’utente in caso di successo o errore
-- Coerenza grafica tra le diverse schermate
+L’introduzione della GUI ha permesso di:
+
+* validare l’usabilità delle API REST dal punto di vista dell’utente finale;
+* verificare la correttezza dell’integrazione client–server;
+* migliorare la chiarezza operativa dei flussi dei casi d’uso principali;
+* mantenere una separazione netta tra backend applicativo e frontend desktop.
+
+Le scelte effettuate risultano coerenti con l’architettura definita nelle iterazioni precedenti e con l’approccio incrementale previsto da AMDD.
+
+---
+
+## Stato del progetto al termine dell’iterazione
+
+Al termine dell’Iterazione 4, il progetto SmartCanteen dispone di:
+
+* un backend REST funzionante e validato;
+* una GUI desktop operativa per i principali casi d’uso;
+* un’integrazione completa tra client grafico e servizi REST;
+* documentazione aggiornata a supporto dell’utilizzo dell’applicazione.
+
+In questa fase:
+
+* la GUI copre solo i casi d’uso principali;
+* non sono state introdotte funzionalità avanzate (autenticazione, ruoli, persistenza reale);
+* il sistema è orientato a una dimostrazione funzionale e completa dei flussi core.
+
+L’Iterazione 4 rappresenta quindi una **fase di completamento e rifinitura**, finalizzata a rendere il sistema utilizzabile e presentabile, senza modificare le fondamenta architetturali già validate.
