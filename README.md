@@ -51,63 +51,34 @@ Il repository è organizzato per **iterazioni AMDD**, ciascuna contenente gli ar
 SmartCanteen
 
 ├── code/
-
 │   └── smartcanteen/                # Progetto Eclipse (backend + GUI)
-
 │
-
 ├── iteration-0-envisioning/
-
 │   ├── requirements/
-
 │   ├── use-cases/
-
 │   └── architecture/
-
 │
-
 ├── iteration-1-early-design/
-
 │   ├── domain-model/
-
 │   └── sequence-diagrams/
-
 │
-
 ├── iteration-2-detailed-design/
-
 │   ├── algorithm-design/
-
 │   ├── api-design/
-
 │   ├── class-diagram/
-
 │   ├── component-diagram/
-
 │   ├── deployment-diagram/
-
 │   └── iteration-summary.md
-
 │
-
 ├── iteration-3-initial-implementation/
-
 │   ├── dynamic-analysis/
-
 │   ├── static-analysis/
-
 │   ├── postman/
-
 │   └── iteration-summary.md
-
 │
-
 ├── iteration-4-completion-refinement/
-
 │   ├── gui/
-
 │   ├── user-guide/
-
 │   └── iteration-summary.md
 
 Ogni cartella di iterazione contiene esclusivamente gli artefatti pertinenti a quella fase, in modo da garantire **chiarezza, tracciabilità e coerenza temporale**.
