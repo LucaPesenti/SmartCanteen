@@ -41,7 +41,7 @@ public class ServeMealFrame extends JFrame {
         setTitle("Servizio Pasto");
         GuiUtils.applyAppIcon(this);
         setResizable(false);
-        setSize(new Dimension(480, 340));
+        setSize(new Dimension(480, 370));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -145,7 +145,7 @@ public class ServeMealFrame extends JFrame {
 
             txtResult.setForeground(new java.awt.Color(0, 120, 0));
             txtResult.setText(
-                    "Pasto servito correttamente\n\n" +
+                    "Pasto servito correttamente.\n\n" +
                     "Ticket: " + ticketId + "\n" +
                     "Piatto: " + mealName + "\n" +
                     "Prezzo: € " + String.format("%.2f", price) + "\n" +

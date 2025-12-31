@@ -41,7 +41,7 @@ public class CheckInFrame extends JFrame {
         setTitle("Check-in Dipendente");
         GuiUtils.applyAppIcon(this);
         setResizable(false);
-        setSize(new Dimension(480, 320));
+        setSize(new Dimension(480, 340));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -144,7 +144,7 @@ public class CheckInFrame extends JFrame {
 
             txtResult.setForeground(new java.awt.Color(0, 120, 0));
             txtResult.setText(
-                    "Check-in completato con successo\n\n" +
+                    "Check-in completato con successo.\n\n" +
                     "ID Dipendente: " + id + "\n" +
                     "Orario: " + dateTime.format(formatter)
             );
